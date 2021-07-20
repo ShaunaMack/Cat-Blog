@@ -3,18 +3,11 @@
 
 {% block title %}My Blog{% endblock title %}
 {% block css_files %}
+  <link rel="stylesheet" href="{% static 'blog/post.css' %}">
   <link rel="stylesheet" href="{% static 'blog/index.css' %}">
 {% endblock css_files %}
 {% block content %}
-  <header id="main-navigation">
 
-    <h1>
-      <a href="">The Blog</a>
-    </h1>
-    <nav>
-      <a href="">All posts</a>
-    </nav>
-  </header>
   <section id="welcome">
     <header>
       <img src="{% static 'blog/images/Ricky.JPG' %}" alt="meow"/>
@@ -25,19 +18,9 @@
   <section id="latest-posts">
     <h2>Richard's latest</h2>
     <ul>
-      <li>
-        <article class="post">
-          <a href="">
-            <img src={% static 'blog/images/catdesk.JPG' %} alt="">
-            <div class="post__content">
-              <h3>maaaowwww</h3>
-              <p>
-                meow meeeeeeooooow meow meow peow meow meow meeeeeeooooow meo
-              </p>
-            </div>
-          </a>
-        </article>
-      </li>
+      {% for post in posts %}
+        {% include 'blog/includes/post.html' %}
+      {% endfor %}
     </ul>
   </section>
   <section id="about">
